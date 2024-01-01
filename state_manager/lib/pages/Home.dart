@@ -10,12 +10,17 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: GestureDetector(
           onTap: () {
             controllerHome.changeTheme();
           },
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text("Change Theme"),
+              SizedBox(width: 5,),
               Icon(controllerHome.model.isDark.value ? Icons.dark_mode : Icons.light_mode)
             ],
           ),
@@ -23,17 +28,21 @@ class Home extends StatelessWidget {
       ),
       body: Container(
         height: double.infinity,
-        child: Center(
-          heightFactor: double.infinity,
-          child: Obx(() => Column(
-            children: [
-              Text(
-                controllerHome.model.name.value,style: TextStyle(fontSize: 35),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Obx(() => Column(
+                children: [
+                  Text(
+                    controllerHome.model.name.value,style: TextStyle(fontSize: 35),
+                  ),
+                  Text("Umur setiap Tekan : ${controllerHome.model.number.value}")
+                ]
               ),
-              Text("Umur setiap Tekan : ${controllerHome.model.number.value}")
-            ]
-          ),
-          )
+              )
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
