@@ -45,12 +45,24 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          //controllerHome.toUppercase();
-          controllerHome.increment();
-        },
-        child: Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FloatingActionButton(
+            onPressed: (){
+              //controllerHome.toUppercase();
+              controllerHome.increment();
+            },
+            child: Icon(Icons.add),
+          ),
+           FloatingActionButton(
+            onPressed: (){
+              //controllerHome.toUppercase();
+              controllerHome.increment();
+            },
+            child: Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }
