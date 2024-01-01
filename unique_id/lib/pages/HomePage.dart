@@ -4,11 +4,11 @@ import 'package:get/instance_manager.dart';
 import 'package:unique_id/controllers/controller.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  Home({super.key});
+  final controller = Get.find<Controller>();
 
   @override
   Widget build(BuildContext context) {
-    final controllerChangeTheme = Get.find<Controller>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
         ),),
         actions: [
           IconButton(onPressed: (){
-            controllerChangeTheme.changeTheme();
+            controller.changeTheme();
           }, icon: Icon(Icons.dark_mode))
         ],
       ),
@@ -34,29 +34,34 @@ class Home extends StatelessWidget {
               Container(
                 width: 300,
                 height: 500,
-                child: GetBuilder<Controller>(
-                  builder: (controller)=>ListView.builder(
+                child: Obx(() => ListView.builder(
                     scrollDirection: Axis.vertical,
                     itemCount: controller.products.length,
                     itemBuilder: (context, index) {
                       return Container(
+                        width: 300,
+                        height: 300,
                         decoration: BoxDecoration(
-                          color: Colors.amber
+                          border: Border.all()
                         ),
                         child: Column(
                           children: [
-                            Container(
-                              width: 100,
-                              height: 100,
-                              child: Image.asset(controller.products[index].image)
-                            ),
-                            
+                            Image.asset(controller.products[index].image,fit: BoxFit.cover,height: 200,),
+                            Text(controller.products[index].name),
+                            Row(
+                              children: [
+                                IconButton(
+                                onPressed: () {
+                                  controller.increment(index);
+                                }, icon: Icon(Icons.add)),
+                                Text("${controller.products[index].numberItems}")
+                              ],
+                            )
                           ],
-                        ),
+                        )
                       );
                     },
-                  )
-                ),
+                  ))
               )
             ],
           ),
