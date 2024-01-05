@@ -52,9 +52,12 @@ class Home extends StatelessWidget {
                               children: [
                                 IconButton(
                                 onPressed: () {
-                                  controller.increment(index);
+                                  controller.increament(index);
                                 }, icon: Icon(Icons.add)),
-                                Text("${controller.products[index].numberItems}")
+                                Text("${controller.products[index].numberItems}"),
+                                IconButton(onPressed: (){
+                                  controller.decreament(index);
+                                }, icon: Icon(Icons.remove))
                               ],
                             ))
                           ],

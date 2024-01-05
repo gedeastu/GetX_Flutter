@@ -14,8 +14,17 @@ class Controller extends GetxController{
     theme.isDark.value = !theme.isDark.value;
   }
 
-  void increment(int index){
+  void increament(int index){
     products[index].numberItems++;
     update();
+  }
+
+  void decreament(int index){
+    if(products[index].numberItems == 0){
+
+    }else{
+      products[index].numberItems--;
+      update();
+    }
   }
 }
