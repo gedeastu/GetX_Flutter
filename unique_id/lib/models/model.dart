@@ -10,7 +10,7 @@ class Product{
   double price;
   final String image;
   final String type;
-  int numberItems = 0;
+  var numberItems = 0.obs;
 
   Product({
     required this.id,
@@ -18,7 +18,7 @@ class Product{
     required this.image,
     required this.price,
     required this.type,
-    this.numberItems = 0
+    required this.numberItems
   });
 }
 

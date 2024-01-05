@@ -5,9 +5,9 @@ import 'package:unique_id/models/model.dart';
 class Controller extends GetxController{
   final theme = Theme();
   final numberOfItem = NumberOfItem();
-  final products = <Product>[
-    Product(id: "1", name: "Vans Sneakers Series 2019", image: "assets/vans.jpeg", price: 40.99, type: "Sport",),
-    Product(id: "2", name: "Air Jordan 1 - Remastered", image: "assets/airjordan01.webp", price: 90.99, type: "Sport",)
+  var products = <Product>[
+    Product(id: "1", name: "Vans Sneakers Series 2019", image: "assets/vans.jpeg", price: 40.99, type: "Sport",numberItems: RxInt(0)),
+    Product(id: "2", name: "Air Jordan 1 - Remastered", image: "assets/airjordan01.webp", price: 90.99, type: "Sport",numberItems: RxInt(0))
   ].obs;
 
   void changeTheme(){

@@ -34,7 +34,7 @@ class Home extends StatelessWidget {
               Container(
                 width: 300,
                 height: 500,
-                child: Obx(() => ListView.builder(
+                child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     itemCount: controller.products.length,
                     itemBuilder: (context, index) {
@@ -48,7 +48,7 @@ class Home extends StatelessWidget {
                           children: [
                             Image.asset(controller.products[index].image,fit: BoxFit.cover,height: 200,),
                             Text(controller.products[index].name),
-                            Row(
+                            Obx(() => Row(
                               children: [
                                 IconButton(
                                 onPressed: () {
@@ -56,12 +56,12 @@ class Home extends StatelessWidget {
                                 }, icon: Icon(Icons.add)),
                                 Text("${controller.products[index].numberItems}")
                               ],
-                            )
+                            ))
                           ],
                         )
                       );
                     },
-                  ))
+                  )
               )
             ],
           ),
